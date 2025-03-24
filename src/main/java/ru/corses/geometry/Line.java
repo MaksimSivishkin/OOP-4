@@ -2,7 +2,9 @@ package ru.corses.geometry;
 
 import ru.corses.main.Measurable;
 
-public class Line implements Measurable {
+import java.util.Objects;
+
+public class Line implements Cloneable, Measurable {
     protected Point x;
     protected Point y;
 
@@ -43,5 +45,28 @@ public class Line implements Measurable {
     public String toString(){
         String res=String.format("%s, %s", x, y);
         return res;
+    }
+
+    @Override
+    public Line clone() {
+        try {
+            Line clone = (Line) super.clone();
+            // TODO: copy mutable state here, so the clone can't change the internals of the original
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Line line = (Line) o;
+        return Objects.equals(x, line.x) && Objects.equals(y, line.y);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 }
