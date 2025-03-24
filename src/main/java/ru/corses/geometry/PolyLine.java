@@ -4,8 +4,9 @@ import ru.corses.main.Measurable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-public class PolyLine implements Measurable {
+public class PolyLine implements Measurable, Cloneable {
     protected ArrayList <Line> lines=new ArrayList<>();
 
     public void addPolyLine(Line line){
@@ -45,5 +46,28 @@ public class PolyLine implements Measurable {
     @Override
     public double getLenghth(double x1, double y1, double x2, double y2) {
         return 0;
+    }
+
+    @Override
+    public PolyLine clone() {
+        try {
+            PolyLine clone = (PolyLine) super.clone();
+            // TODO: copy mutable state here, so the clone can't change the internals of the original
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        PolyLine polyLine = (PolyLine) o;
+        return Objects.equals(lines, polyLine.lines);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(lines);
     }
 }
