@@ -1,6 +1,6 @@
 package ru.corses.geometry;
 
-public class Point {
+public class Point implements Cloneable {
     protected int x;
     protected int y;
 
@@ -27,5 +27,15 @@ public class Point {
 
     public String toString(){
         return String.format("{%s;%s}", x, y);
+    }
+
+    @Override
+    public Point clone() {
+        try {
+            Point clone = (Point) super.clone();
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }

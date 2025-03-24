@@ -1,19 +1,15 @@
 package ru.corses.main;
 
-import static java.lang.Integer.parseInt;
-import static java.lang.Math.pow;
+import ru.corses.geometry.Point;
 
 
 public class Start {
     public static void main(String[] args) {
-        System.out.println(myPow("5","5"));
-    }
-    public static int myPow(String x, String y){
-        int z = parseInt(x);
-        int q = parseInt(y);
-        int s = (int) pow( z, q);
-        return s;
-    }
+        Point point = new Point(1,2);
+        Point point1=point.clone();
 
+        System.out.println(point.equals(point1));
+        System.out.println(point1);
+    }
 }
 
