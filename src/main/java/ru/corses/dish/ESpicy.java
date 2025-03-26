@@ -4,6 +4,4 @@ public enum ESpicy {
     NOT_SPICY,
     SPICY,
     VERY_SPICY;
-
-
 }
